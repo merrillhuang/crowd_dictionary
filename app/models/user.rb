@@ -22,4 +22,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :translated_words, class_name: "Phrase", foreign_key: "submitter_id", dependent: :destroy
+
+  has_many  :ratings, class_name: "Rating", foreign_key: "submitter_id", dependent: :destroy
 end

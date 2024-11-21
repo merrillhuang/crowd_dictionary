@@ -10,4 +10,7 @@
 #  submitter_id :integer          not null
 #
 class Rating < ApplicationRecord
+  belongs_to :submitter, required: true, class_name: "User", foreign_key: "submitter_id"
+
+  belongs_to :phrase, required: true, class_name: "Phrase", foreign_key: "phrase_id"
 end
