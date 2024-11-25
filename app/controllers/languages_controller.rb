@@ -58,6 +58,7 @@ class LanguagesController < ApplicationController
   end
 
   def landing
+    @languages = Language.all
   end
 
   private
