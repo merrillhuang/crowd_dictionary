@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "languages#index"
+  root "languages#landing"
   
   resources :phrases
   resources :ratings
