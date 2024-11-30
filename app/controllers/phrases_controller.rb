@@ -8,8 +8,14 @@ class PhrasesController < ApplicationController
 
   # GET /phrases/1 or /phrases/1.json
   def show
-    @translations = Phrase.where({"origin_id" => @phrase.id, "language_id" => params[:target_language]})
-    @target_language = Language.where("id" => params[:target_language])[0].name
+    if params[:target_language]
+      @translations = Phrase.where({"origin_id" => @phrase.id, "language_id" => params[:target_language]})
+      @target_language = Language.where("id" => params[:target_language])[0].name
+    else
+      respond_to do |format|
+        format.html { render :no_language_selected }
+      end
+    end
   end
 
   # GET /phrases/new
