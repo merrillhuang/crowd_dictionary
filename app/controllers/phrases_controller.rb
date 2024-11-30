@@ -9,7 +9,7 @@ class PhrasesController < ApplicationController
   # GET /phrases/1 or /phrases/1.json
   def show
     if params[:target_language]
-      @translations = Phrase.where({"origin_id" => @phrase.id, "language_id" => params[:target_language]})
+      @translations = @phrase.translations.where({"language_id" => params[:target_language]})
       @target_language = Language.where("id" => params[:target_language])[0].name
     else
       respond_to do |format|
