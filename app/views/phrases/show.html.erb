@@ -1,10 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @phrase %>
-
-<div>
-  <%= link_to "Edit this phrase", edit_phrase_path(@phrase) %> |
-  <%= link_to "Back to phrases", phrases_path %>
-
-  <%= button_to "Destroy this phrase", @phrase, method: :delete %>
-</div>
+<% if @translations.empty? %>
+  <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database. Would you like to add a translation?</p>
+<%else %>
+  <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
+  <% @translations.each do |translation| %>
+    <div>
+      <p><%= translation.content %></p>
+    </div>
+  <% end%>
+<% end %>
