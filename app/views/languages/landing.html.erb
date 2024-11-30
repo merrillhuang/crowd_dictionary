@@ -1,26 +1,26 @@
 <h1>Welcome to Crowd Dictionary!</h1>
 
-<h2>How do you say</h2>
+<h2>Translate</h2>
 
-<%= form_with(url: "/") do %>
+<%= form_tag phrase_search_path, method: :get do %>
   <div>
     <%= label_tag :origin_word_box, "" %>
-    <%= text_field_tag :query_origin_word, nil, placeholder: "Starting word" %>
+    <%= text_field_tag :origin_word, nil, placeholder: "Starting word" %>
   </div>
 
   <h3>from</h3>
 
   <div>
     <%= label_tag :starting_language, "" %>
-    <%= select_tag "Starting Language", options_from_collection_for_select(@languages, "id", "name") %>
+    <%= select_tag :starting_language, options_from_collection_for_select(@languages, "id", "name"), prompt: "Starting Language" %>
   </div>
 
-  <h3>in</h3>
+  <h3>to</h3>
 
   <div>
     <%= label_tag :target_language, "" %>
-    <%= select_tag "Target Language", options_from_collection_for_select(@languages, "id", "name") %>
+    <%= select_tag :target_language, options_from_collection_for_select(@languages, "id", "name"), prompt: "Target Language" %>
   </div>
 
-  <%= button_tag "Go!" %>
+  <%= submit_tag "Go!" %>
 <% end %>

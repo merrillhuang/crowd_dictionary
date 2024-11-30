@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :languages
   devise_for :users
   
+  get "phrase_search", to: "phrases#search", as: :phrase_search
+  get "users/:id", to: "users#show", as: :user
 end

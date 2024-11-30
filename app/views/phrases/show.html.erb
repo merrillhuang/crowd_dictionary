@@ -1,10 +1,35 @@
-<p style="color: green"><%= notice %></p>
+<% if @translations.empty? %>
+  <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database. Would you like to add a translation?</p>
+<%else %>
+  <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
+  <% @translations.each do |translation| %>
+    <div>
+      <p><%= translation.content %></p>
+      
+      <p>
+        <% if translation.ratings.empty? %>
+          Translation not yet rated
+        <% else %>
+          Average rating: <%= translation.ratings.average(:rating_val) %>
+        <% end %>
+      </p>
+      
+      <p><%= translation.ratings.size %> total ratings</p>
+      
+      <p>Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %></p>
+    </div>
 
-<%= render @phrase %>
-
-<div>
-  <%= link_to "Edit this phrase", edit_phrase_path(@phrase) %> |
-  <%= link_to "Back to phrases", phrases_path %>
-
-  <%= button_to "Destroy this phrase", @phrase, method: :delete %>
-</div>
+    <% if user_signed_in? %>
+      <% not_rated = Rating.find_by({"phrase_id" => translation.id, "submitter_id" => current_user.id}) == nil %>
+      <% if not_rated %> 
+        <p>Rate this translation:</p>
+        <%= form_with url: ratings_path do %>
+          <%= hidden_field_tag :submitter_id, current_user.id %>
+          <%= hidden_field_tag :phrase_id, translation.id %>
+          <%= number_field_tag :rating_val, 5, in: 1..5 %>
+          <%= submit_tag "Rate" %>
+        <% end %>
+      <% end%>
+    <% end %>
+  <% end %>
+<% end %>

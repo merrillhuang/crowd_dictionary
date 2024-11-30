@@ -67,7 +67,9 @@ task({ :sample_data => :environment }) do
     end
   end
 
-  25.times do
+  phrases = Phrase.all
+
+  200.times do
     rand_rating = rand(1..5)
     rand_phrase = rand(1..25)
     rating = Rating.create(
