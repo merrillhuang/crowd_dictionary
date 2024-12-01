@@ -23,15 +23,20 @@
   <% end %>
 <% end %>
 
-<% if user_signed_in? %>
-  <%= form_with url: phrases_path do %>
-    <p>Add <%= @origin_content %> as an origin word for <%= @origin_language %> to our database?</p>
-    <%= hidden_field_tag :content, @origin_content %>
-    <%= hidden_field_tag :language_id, params[:starting_language] %>
-    <%= hidden_field_tag :origin_id, nil %>
-    <%= hidden_field_tag :submitter_id, nil %>
-    <%= submit_tag "Add origin word" %>
+<div>
+  <% if user_signed_in? %>
+    <%= form_with url: phrases_path do %>
+      <div>
+        <p>Add a translation for <%= @phrase.content %> in <%= @target_language %>?</p>
+        <%= label_tag :new_translation_box, "" %>
+        <%= text_field_tag :content, nil, placeholder: "Enter your translation" %>
+      </div>
+      <%= hidden_field_tag :language_id, params[:target_language] %>
+      <%= hidden_field_tag :origin_id, params[:id] %>
+      <%= hidden_field_tag :submitter_id, current_user.id %>
+      <%= submit_tag "Add translation" %>
+    <% end %>
+  <% else %>
+    <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate these translations or add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>
   <% end %>
-<% else %>
-  <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate these translations or add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>
-<% end %>
+</div>

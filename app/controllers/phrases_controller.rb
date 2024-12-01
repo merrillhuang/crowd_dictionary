@@ -33,8 +33,12 @@ class PhrasesController < ApplicationController
 
     respond_to do |format|
       if @phrase.save
-        format.html { redirect_to phrase_url(@phrase), notice: "Phrase was successfully created." }
-        format.json { render :show, status: :created, location: @phrase }
+        if (@phrase.origin_id != nil)
+          format.html { redirect_to (phrase_url(@phrase.origin_id)+"?target_language="+@phrase.language_id.to_s), notice: "Phrase was successfully created." }
+        else
+          format.html { redirect_to phrase_url(@phrase), notice: "Phrase was successfully created." }
+          format.json { render :show, status: :created, location: @phrase }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @phrase.errors, status: :unprocessable_entity }
