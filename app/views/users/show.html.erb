@@ -1,2 +1,19 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>User <%= @user.username %></h1>
+<p>Average translation rating: <%= @average_rating %></p>
+<h2>Submitted Translations</h2>
+<div>
+  <% @user.translated_words.each do |translation| %>
+    <% if translation.origin_word != nil %>
+      <p><%= translation.origin_word.content %>-> <%= translation.content %></p>
+      <p><%= translation.origin_word.target_language.name %> -> <%= translation.target_language.name %></p>
+      <p>
+        <% if translation.ratings.empty? %>
+          Translation not yet rated
+        <% else %>
+          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
+        <% end %>
+      </p>
+      <%= render "ratings/not_rated", translation: translation %>
+    <% end %>
+  <% end %>
+</div>

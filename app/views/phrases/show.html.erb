@@ -10,7 +10,7 @@
         <% if translation.ratings.empty? %>
           Translation not yet rated
         <% else %>
-          Average rating: <%= translation.ratings.average(:rating_val) %>
+          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
         <% end %>
       </p>
       
@@ -19,17 +19,6 @@
       <p>Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %></p>
     </div>
 
-    <% if user_signed_in? %>
-      <% not_rated = Rating.find_by({"phrase_id" => translation.id, "submitter_id" => current_user.id}) == nil %>
-      <% if not_rated %> 
-        <p>Rate this translation:</p>
-        <%= form_with url: ratings_path do %>
-          <%= hidden_field_tag :submitter_id, current_user.id %>
-          <%= hidden_field_tag :phrase_id, translation.id %>
-          <%= number_field_tag :rating_val, 5, in: 1..5 %>
-          <%= submit_tag "Rate" %>
-        <% end %>
-      <% end%>
-    <% end %>
+    <%= render "ratings/not_rated", translation: translation %>
   <% end %>
 <% end %>
