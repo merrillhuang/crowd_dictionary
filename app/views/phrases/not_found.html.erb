@@ -1,1 +1,14 @@
-<p>Sorry! <%= @origin_content %> from <%= @origin_language %> is not in our database. Please submit a request to add this word.</p>
+<p>Sorry! <%= @origin_content %> from <%= @origin_language %> is not an origin word in our database.</p>
+
+<% if user_signed_in? %>
+  <%= form_with url: phrases_path do %>
+    <p>Add <%= @origin_content %> as an origin word for <%= @origin_language %> to our database?</p>
+    <%= hidden_field_tag :content, @origin_content %>
+    <%= hidden_field_tag :language_id, params[:starting_language] %>
+    <%= hidden_field_tag :origin_id, nil %>
+    <%= hidden_field_tag :submitter_id, nil %>
+    <%= submit_tag "Add origin word" %>
+  <% end %>
+<% else %>
+  <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add origin words to our database!</p>
+<% end %>

@@ -88,6 +88,6 @@ class PhrasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phrase_params
-      params.require(:phrase).permit(:content, :submitter_id, :language_id, :origin_id)
+      params.permit(:content, :submitter_id, :language_id, :origin_id)
     end
 end
