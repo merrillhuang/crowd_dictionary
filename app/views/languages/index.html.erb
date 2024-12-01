@@ -9,4 +9,8 @@
   <% end %>
 </div>
 
-<div>Don't see your language? <%= link_to "Add it", new_language_path %> to our database!</div>
+<% if user_signed_in? %>
+  <div>Don't see your language? <%= link_to "Add it", new_language_path %> to our database!</div>
+<% else %>
+  <div>Don't see your language? Sign in to add a new language to the database!</div>
+<% end%>
