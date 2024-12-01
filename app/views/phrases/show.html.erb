@@ -1,6 +1,6 @@
 <% if @translations.empty? %>
-  <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database. Would you like to add a translation?</p>
-<%else %>
+  <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database.</p>
+<% else %>
   <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
   <% @translations.each do |translation| %>
     <div>
@@ -37,6 +37,6 @@
       <%= submit_tag "Add translation" %>
     <% end %>
   <% else %>
-    <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate these translations or add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>
+    <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate translations and add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>
   <% end %>
 </div>
