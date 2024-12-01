@@ -10,5 +10,5 @@
     <%= submit_tag "Add origin word" %>
   <% end %>
 <% else %>
-  <p>Sign in to add origin words to our database!</p>
+  <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add origin words to our database!</p>
 <% end %>
