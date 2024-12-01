@@ -6,7 +6,13 @@
     <% if translation.origin_word != nil %>
       <p><%= translation.origin_word.content %>-> <%= translation.content %></p>
       <p><%= translation.origin_word.target_language.name %> -> <%= translation.target_language.name %></p>
-      <p>Average rating: <%= translation.ratings.average(:rating_val) %>
+      <p>
+        <% if translation.ratings.empty? %>
+          Translation not yet rated
+        <% else %>
+          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
+        <% end %>
+      </p>
       <%= render "ratings/not_rated", translation: translation %>
     <% end %>
   <% end %>
