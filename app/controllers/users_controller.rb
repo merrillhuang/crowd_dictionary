@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       end
     end
 
-    @average_rating = sum / num_ratings
+    @average_rating = (sum / num_ratings).truncate(2)
   end
 
   private

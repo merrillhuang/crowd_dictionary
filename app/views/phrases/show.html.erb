@@ -10,7 +10,7 @@
         <% if translation.ratings.empty? %>
           Translation not yet rated
         <% else %>
-          Average rating: <%= translation.ratings.average(:rating_val) %>
+          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
         <% end %>
       </p>
       
