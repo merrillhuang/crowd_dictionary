@@ -34,7 +34,7 @@ class PhrasesController < ApplicationController
     respond_to do |format|
       if @phrase.save
         if (@phrase.origin_id != nil)
-          format.html { redirect_to (phrase_url(@phrase.origin_id)+"?target_language="+@phrase.language_id.to_s), notice: "Phrase was successfully created." }
+          format.html { redirect_back fallback_location: phrase_path(@phrase), notice: "Phrase was successfully created." }
         else
           format.html { redirect_to phrase_url(@phrase), notice: "Phrase was successfully created." }
           format.json { render :show, status: :created, location: @phrase }
