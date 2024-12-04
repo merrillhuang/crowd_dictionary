@@ -8,7 +8,7 @@ class LanguagesController < ApplicationController
 
   # GET /languages/1 or /languages/1.json
   def show
-    @most_translated_words = MostTranslatedWords.new.call(@language.id)
+    @most_translated_words = MostTranslatedWords.call(@language.id)
   end
 
   # GET /languages/new
