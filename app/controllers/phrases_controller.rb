@@ -70,14 +70,15 @@ class PhrasesController < ApplicationController
   end
 
   def search
-    @origin_content = params[:origin_word]
-    @origin_language = Language.where("id" => params[:starting_language])[0].name
-    @origin_word = Phrase.where({"content" => @origin_content, "origin_id" => nil, "language_id" => params[:starting_language]})
-    if ! @origin_word.empty?
+    @origin_word = PhraseSearch.call(params)
+
+    if @origin_word
       respond_to do |format|
-        format.html { redirect_to phrase_url(@origin_word[0].id, target_language: params[:target_language]) }
+        format.html { redirect_to phrase_url(@origin_word.id, target_language: params[:target_language]) }
       end
     else
+      @origin_content = params[:origin_word]
+      @origin_language = Language.where("id" => params[:starting_language])[0].name
       respond_to do |format|
         format.html { render :not_found }
       end
