@@ -1,11 +1,15 @@
 <h2><%= @language.name %></h2>
 
-<h3>Top 5 most translated words:</h3>
+<h3>Most translated words:</h3>
 
 <div>
-  <% @most_translated_words.each do |word| %>
-    <p><%= link_to word.content, phrase_path(word) %></p>
-    <p>Translated <%= word.translations.size %> times </p>
+  <% if @most_translated_words.empty? %>
+    <p>Sorry! <%= @language.name %> currently has no submitted translations.</p>
+  <% else %>
+    <% @most_translated_words.each do |word| %>
+      <p><%= link_to word.content, phrase_path(word) %></p>
+      <p>Translated <%= word.translations.size %> times </p>
+    <% end %>
   <% end %>
   <%= link_to "Back to languages", languages_path %>
 </div>
