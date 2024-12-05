@@ -2,14 +2,24 @@
 
 <h3>Most translated words:</h3>
 
-<div>
+<ol class="list-group list-group-numbered">
   <% if @most_translated_words.empty? %>
     <p>Sorry! <%= @language.name %> currently has no submitted translations.</p>
   <% else %>
     <% @most_translated_words.each do |word| %>
-      <p><%= link_to word.content, phrase_path(word) %></p>
-      <p>Translated <%= word.translations.size %> times </p>
+      <%= link_to phrase_path(word), class: "list-group-item d-flex" do %>
+        <span class="me-auto">&nbsp; <%= word.content %></span>
+        <span><%= word.translations.size %> translations</span>
+      <% end %>
     <% end %>
   <% end %>
   <%= link_to "Back to languages", languages_path %>
+</ol>
+
+<h3 class="mt-4">Origin Words:</h3>
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+  <% @all_origin_words_for_language.each do |word| %>
+    <div class="col"><%= link_to word.content, phrase_path(word) %></div>
+  <% end %>
 </div>
