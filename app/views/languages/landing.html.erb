@@ -22,5 +22,5 @@
     <%= select_tag :target_language, options_from_collection_for_select(@languages, "id", "name"), prompt: "Target Language" %>
   </div>
 
-  <%= submit_tag "Go!" %>
+  <%= submit_tag "Go!", class: "btn btn-success" %>
 <% end %>

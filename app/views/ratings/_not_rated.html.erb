@@ -6,7 +6,7 @@
       <%= hidden_field_tag :submitter_id, current_user.id %>
       <%= hidden_field_tag :phrase_id, translation.id %>
       <%= number_field_tag :rating_val, 5, in: 1..5 %>
-      <%= submit_tag "Rate" %>
+      <%= submit_tag "Rate", class: "btn btn-primary" %>
     <% end %>
   <% end%>
 <% end %>

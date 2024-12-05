@@ -20,7 +20,7 @@
       <%= hidden_field_tag :language_id, params[:target_language] %>
       <%= hidden_field_tag :origin_id, params[:id] %>
       <%= hidden_field_tag :submitter_id, current_user.id %>
-      <%= submit_tag "Add translation" %>
+      <%= submit_tag "Add translation", class: "btn btn-success" %>
     <% end %>
   <% else %>
     <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate translations and add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>

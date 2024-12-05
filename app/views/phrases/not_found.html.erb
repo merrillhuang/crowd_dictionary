@@ -7,7 +7,7 @@
     <%= hidden_field_tag :language_id, params[:starting_language] %>
     <%= hidden_field_tag :origin_id, nil %>
     <%= hidden_field_tag :submitter_id, nil %>
-    <%= submit_tag "Add origin word" %>
+    <%= submit_tag "Add origin word", class: "btn btn-success" %>
   <% end %>
 <% else %>
   <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add origin words to our database!</p>
