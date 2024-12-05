@@ -2,25 +2,11 @@
   <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database.</p>
 <% else %>
   <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
-  <% @translations.each do |translation| %>
-    <div>
-      <p><%= translation.content %></p>
-      
-      <p>
-        <% if translation.ratings.empty? %>
-          Translation not yet rated
-        <% else %>
-          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
-        <% end %>
-      </p>
-      
-      <p><%= translation.ratings.size %> total ratings</p>
-      
-      <p>Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %></p>
-    </div>
-
-    <%= render "ratings/not_rated", translation: translation %>
-  <% end %>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @translations.each do |translation| %>
+      <%= render "phrases/phrase", translation: translation %>
+    <% end %>
+  </div>
 <% end %>
 
 <div>
