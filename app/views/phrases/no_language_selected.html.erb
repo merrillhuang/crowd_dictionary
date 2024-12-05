@@ -1,20 +1,30 @@
-<p>See translations for <%= @phrase.content %> in 
+<% translations_for_word = Phrase.where({:origin_id => @phrase.id}) %>
 
-<%= form_tag phrase_search_path, method: :get do %>
-  <div>
-    <%= label_tag :origin_word_box, "" %>
-    <%= hidden_field_tag :origin_word, @phrase.content %>
-  </div>
+<% if translations_for_word.size != 0 %>
+  <p>See translations for <%= @phrase.content %> in 
 
-  <div>
-    <%= label_tag :starting_language, "" %>
-    <%= hidden_field_tag :starting_language, @phrase.language_id %>
-  </div>
+  <%= form_tag phrase_search_path, method: :get do %>
+    <div>
+      <%= label_tag :origin_word_box, "" %>
+      <%= hidden_field_tag :origin_word, @phrase.content %>
+    </div>
 
-  <div>
-    <%= label_tag :target_language, "" %>
-    <%= select_tag :target_language, options_from_collection_for_select(Language.all, "id", "name"), prompt: "Target Language" %>
-  </div>
+    <div>
+      <%= label_tag :starting_language, "" %>
+      <%= hidden_field_tag :starting_language, @phrase.language_id %>
+    </div>
 
-  <%= submit_tag "Go!" %>
+    <div>
+      <% languages_with_translations_for_word = [] %>
+      <% translations_for_word.each do |translation| %>
+        <% languages_with_translations_for_word.push translation.language_id %>
+      <% end %>
+      <%= label_tag :target_language, "" %>
+      <%= select_tag :target_language, options_from_collection_for_select(Language.where({:id => languages_with_translations_for_word}), "id", "name"), prompt: "Target Languages with translations" %>
+    </div>
+
+    <%= submit_tag "Go!", class: "btn btn-success" %>
+  <% end %>
+<% else %>
+  <p>Sorry! No translations have been submitted for <%= @phrase.content %> yet.</p>
 <% end %>
