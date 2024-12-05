@@ -28,3 +28,19 @@
 <% else %>
   <p>Sorry! No translations have been submitted for <%= @phrase.content %> yet.</p>
 <% end %>
+
+<% if user_signed_in? %>
+  <%= form_with url: phrases_path do %>
+    <div>
+      <p>Add a translation for <%= @phrase.content %>?</p>
+      <%= label_tag :new_translation_box, "" %>
+      <%= text_field_tag :content, nil, placeholder: "Enter your translation" %>
+    </div>
+    <div>
+      <%= select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name"), prompt: "Target Language" %>
+    </div>
+    <%= hidden_field_tag :origin_id, params[:id] %>
+    <%= hidden_field_tag :submitter_id, current_user.id %>
+    <%= submit_tag "Add translation", class: "btn btn-success" %>
+  <% end %>
+<% end %>
