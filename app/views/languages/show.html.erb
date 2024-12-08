@@ -35,7 +35,7 @@
         <div>
           <p>Add an origin word for <%= @language.name %> in our database?</p>
           <%= label_tag :new_origin_word, "" %>
-          <%= text_field_tag :content, nil, placeholder: "Enter a new origin word" %>
+          <%= text_field_tag :content, nil, placeholder: "Enter a new origin word", required: true %>
         </div>
         <%= hidden_field_tag :language_id, params[:id] %>
         <%= hidden_field_tag :origin_id, nil %>
