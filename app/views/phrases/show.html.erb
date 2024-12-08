@@ -2,26 +2,14 @@
   <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database.</p>
 <% else %>
   <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
-  <% @translations.each do |translation| %>
-    <div>
-      <p><%= translation.content %></p>
-      
-      <p>
-        <% if translation.ratings.empty? %>
-          Translation not yet rated
-        <% else %>
-          Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
-        <% end %>
-      </p>
-      
-      <p><%= translation.ratings.size %> total ratings</p>
-      
-      <p>Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %></p>
-    </div>
-
-    <%= render "ratings/not_rated", translation: translation %>
-  <% end %>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @translations.each do |translation| %>
+      <%= render "phrases/phrase", translation: translation %>
+    <% end %>
+  </div>
 <% end %>
+
+<br>
 
 <div>
   <% if user_signed_in? %>
@@ -29,12 +17,12 @@
       <div>
         <p>Add a translation for <%= @phrase.content %> in <%= @target_language %>?</p>
         <%= label_tag :new_translation_box, "" %>
-        <%= text_field_tag :content, nil, placeholder: "Enter your translation" %>
+        <%= text_field_tag :content, nil, placeholder: "Enter your translation", required: true %>
       </div>
       <%= hidden_field_tag :language_id, params[:target_language] %>
       <%= hidden_field_tag :origin_id, params[:id] %>
       <%= hidden_field_tag :submitter_id, current_user.id %>
-      <%= submit_tag "Add translation" %>
+      <%= submit_tag "Add translation", class: "btn btn-success" %>
     <% end %>
   <% else %>
     <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate translations and add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>

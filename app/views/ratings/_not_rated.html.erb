@@ -5,8 +5,8 @@
     <%= form_with url: ratings_path do %>
       <%= hidden_field_tag :submitter_id, current_user.id %>
       <%= hidden_field_tag :phrase_id, translation.id %>
-      <%= number_field_tag :rating_val, 5, in: 1..5 %>
-      <%= submit_tag "Rate" %>
+      <%= number_field_tag :rating_val, 5, in: 1..5, required: true %>
+      <%= submit_tag "Rate", class: "btn btn-primary" %>
     <% end %>
   <% end%>
 <% end %>

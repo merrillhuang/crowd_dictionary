@@ -1,22 +1,25 @@
-<div id="<%= dom_id phrase %>">
-  <p>
-    <strong>Content:</strong>
-    <%= phrase.content %>
-  </p>
+<div class="col">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= translation.content %></h5>
 
-  <p>
-    <strong>Submitter:</strong>
-    <%= phrase.submitter_id %>
-  </p>
+      <p class="card-text">
+          <% if translation.ratings.empty? %>
+            Translation not yet rated
+          <% else %>
+            Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
+          <% end %>
+        </p>
 
-  <p>
-    <strong>Language:</strong>
-    <%= phrase.language_id %>
-  </p>
+      <p class="card-text"><%= translation.ratings.size %> total ratings</p>
+      
+      <%= render "ratings/not_rated", translation: translation %>
+      
+      <br>
 
-  <p>
-    <strong>Origin:</strong>
-    <%= phrase.origin_id %>
-  </p>
-
+      <div class="card-footer text-muted">
+        Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %>
+      </div>
+    </div>
+  </div>
 </div>

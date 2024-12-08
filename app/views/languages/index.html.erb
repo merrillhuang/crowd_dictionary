@@ -1,11 +1,8 @@
 <h1>Languages</h1>
 
-<div id="languages">
+<div id="languages" class="list-group">
   <% @languages.each do |language| %>
-    <%= render language %>
-    <p>
-      <%= link_to "Show this language", language %>
-    </p>
+    <%= link_to language.name, language, class: "list-group-item list-group-item-action" %>
   <% end %>
 </div>
 

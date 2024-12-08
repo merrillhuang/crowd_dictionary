@@ -20,4 +20,8 @@ class Phrase < ApplicationRecord
   belongs_to :origin_word, class_name: "Phrase", foreign_key: "origin_id", optional: true
 
   belongs_to :target_language, required: true, class_name: "Language", foreign_key: "language_id"
+
+  validates :content, presence: true, allow_blank: false
+
+  validates :language_id, presence: true
 end
