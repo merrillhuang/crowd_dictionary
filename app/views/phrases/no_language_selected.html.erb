@@ -29,6 +29,8 @@
   <p>Sorry! No translations have been submitted for <%= @phrase.content %> yet.</p>
 <% end %>
 
+<br>
+
 <% if user_signed_in? %>
   <%= form_with url: phrases_path do %>
     <div>
