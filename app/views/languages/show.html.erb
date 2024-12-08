@@ -18,8 +18,31 @@
 
 <h3 class="mt-4">Origin Words:</h3>
 
-<div class="row row-cols-1 row-cols-md-5 g-4">
-  <% @all_origin_words_for_language.each do |word| %>
-    <div class="col"><%= link_to word.content, phrase_path(word) %></div>
+  <% if @all_origin_words_for_language.size > 0 %>
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+      <% @all_origin_words_for_language.each do |word| %>
+        <div class="col"><%= link_to word.content, phrase_path(word) %></div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Sorry! <%= @language.name %> currently has no origin words in our database.</p>
   <% end %>
+
+  <br>
+
+  <% if user_signed_in? %>
+      <%= form_with url: phrases_path do %>
+        <div>
+          <p>Add an origin word for <%= @language.name %> in our database?</p>
+          <%= label_tag :new_origin_word, "" %>
+          <%= text_field_tag :content, nil, placeholder: "Enter a new origin word" %>
+        </div>
+        <%= hidden_field_tag :language_id, params[:id] %>
+        <%= hidden_field_tag :origin_id, nil %>
+        <%= hidden_field_tag :submitter_id, nil %>
+        <%= submit_tag "Add origin word", class: "btn btn-success" %>
+      <% end %>
+    <% else %>
+      <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add origin words for <%= @target_language %> to our database!</p>
+    <% end %>
 </div>
