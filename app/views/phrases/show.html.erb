@@ -17,7 +17,7 @@
       <div>
         <p>Add a translation for <%= @phrase.content %> in <%= @target_language %>?</p>
         <%= label_tag :new_translation_box, "" %>
-        <%= text_field_tag :content, nil, placeholder: "Enter your translation" %>
+        <%= text_field_tag :content, nil, placeholder: "Enter your translation", required: true %>
       </div>
       <%= hidden_field_tag :language_id, params[:target_language] %>
       <%= hidden_field_tag :origin_id, params[:id] %>
