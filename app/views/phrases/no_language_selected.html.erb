@@ -20,7 +20,7 @@
         <% languages_with_translations_for_word.push translation.language_id %>
       <% end %>
       <%= label_tag :target_language, "" %>
-      <%= select_tag :target_language, options_from_collection_for_select(Language.where({:id => languages_with_translations_for_word}), "id", "name"), prompt: "Target Languages with translations" %>
+      <%= select_tag :target_language, options_from_collection_for_select(Language.where({:id => languages_with_translations_for_word}), "id", "name"), prompt: "Target Languages with translations", required: true %>
     </div>
 
     <%= submit_tag "Go!", class: "btn btn-success" %>
@@ -36,10 +36,10 @@
     <div>
       <p>Add a translation for <%= @phrase.content %>?</p>
       <%= label_tag :new_translation_box, "" %>
-      <%= text_field_tag :content, nil, placeholder: "Enter your translation" %>
+      <%= text_field_tag :content, nil, placeholder: "Enter your translation", required: true %>
     </div>
     <div>
-      <%= select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name"), prompt: "Target Language" %>
+      <%= select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name"), prompt: "Target Language", required: true %>
     </div>
     <%= hidden_field_tag :origin_id, params[:id] %>
     <%= hidden_field_tag :submitter_id, current_user.id %>
