@@ -5,14 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-ENV['USERNAMES'].split(' ').each_with_index do |username, index|
-  if User.find_by({:email => "#{username}@example.com"}) == nil
-    User.create(
-      email: "#{username}@example.com",
-      password: ENV['PASSWORDS'].split(' ')[index],
-      username: username
-    )
-  end
+usernames = Array.new
+
+usernames << "alice"
+usernames << "bob"
+
+8.times do
+  usernames << Faker::Name.first_name
+end
+
+usernames.each do |username|
+  User.create(
+    email: "#{username}@example.com",
+    password: "password",
+    username: username.downcase
+  )
 end
 
 languages = ["English", "Chinese", "Spanish", "French", "Korean"]
