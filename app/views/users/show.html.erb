@@ -1,6 +1,6 @@
 <h1>User <%= @user.username %></h1>
 <% if @num_ratings > 0 %>
-  <p>Average translation rating: &nbsp; <%= @sum / @num_ratings %></p>
+  <p>Average translation rating: &nbsp; <%= (@sum / @num_ratings).truncate(2) %></p>
 <% else %>
   <p>This user's translations not have yet been rated</p>
 <% end %>
