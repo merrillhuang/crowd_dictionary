@@ -67,10 +67,14 @@ class LanguagesController < ApplicationController
     end
   end
 
-  def landing
+  def search
     authorize Language
     
     @languages = Language.all
+  end
+
+  def landing
+    authorize Language
   end
 
   private

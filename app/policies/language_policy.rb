@@ -28,6 +28,10 @@ class LanguagePolicy < ApplicationPolicy
     new?
   end
 
+  def search?
+    true
+  end
+
   def landing?
     true
   end
