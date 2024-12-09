@@ -136,11 +136,14 @@ if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content =>
   )
 end
 
-200.times do
-  rand_rating = rand(4..5)
-  Rating.create(
-    rating_val: rand_rating,
-    phrase_id: Phrase.where.not({:origin_id => nil}).sample.id,
-    submitter_id: User.all.sample.id
-  )
+if Rating.count < 200
+  200.times do
+    rand_rating = rand(4..5)
+    phrase_id = Phrase.all.sample.id
+      Rating.create(
+        rating_val: rand_rating,
+        phrase_id: Phrase.where.not({:origin_id => nil}).sample.id,
+        submitter_id: User.all.sample.id
+      )
+  end
 end
