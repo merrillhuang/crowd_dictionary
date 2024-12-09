@@ -84,6 +84,7 @@ if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => 
   origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
   submitter_id: User.all.sample.id
   )
+end
 
 if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
@@ -92,6 +93,7 @@ if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content =
   origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
   submitter_id: User.all.sample.id
   )
+end
 
 if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
@@ -100,6 +102,7 @@ if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content =
   origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
   submitter_id: User.all.sample.id
   )
+end
 
 if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
@@ -108,6 +111,7 @@ if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => 
   origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
   submitter_id: User.all.sample.id
   )
+end
 
 if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content => "书", :origin_id => nil}).id}) == nil
   Phrase.create(
@@ -116,6 +120,7 @@ if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content =>
   origin_id: Phrase.find_by({:content => "书", :origin_id => nil}).id,
   submitter_id: User.all.sample.id
   )
+end
 
 200.times do
   rand_rating = rand(4..5)
