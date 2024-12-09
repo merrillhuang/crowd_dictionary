@@ -20,6 +20,7 @@ languages = ["English", "Chinese", "Spanish", "French", "Korean"]
 languages.each do |language|
   if Language.find_by({:name => language}) == nil
     Language.create(name: language)
+  end
 end
 
 english_phrases = ["book", "tree", "house", "water", "car"]
@@ -131,7 +132,7 @@ end
 200.times do
   rand_rating = rand(4..5)
   Rating.create(
-    rating: rand_rating,
+    rating_val: rand_rating,
     phrase_id: Phrase.where.not({:origin_id => nil}).sample.id,
     submitter_id: User.all.sample.id
   )
