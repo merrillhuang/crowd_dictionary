@@ -1,1 +1,30 @@
-<h1>Hi!</h1>
+<h1>Welcome to Crowd Dictionary!</h1>
+<h3>Find translations for ANY word FROM any language TO any language</h3>
+<br>
+
+<h2>The Problem</h2>
+<p>Are you a professional translator or language enthusiast? Have you ever had issues with finding translations for technical jargon or slang words?
+  Crowd Dictionary can help you!
+</p>
+
+<br>
+
+<ul>
+  <li>A growing community of <%= User.count %>+ users</li>
+  <li>Providing <%= Phrase.where.not({:origin_id => nil}).count %> and counting verified translations</li>
+  <li>For over <%= Language.count %> languages!
+</ul>
+
+<h3>Trust and Accuracy through Crowd-Sourcing</h3>
+<p>Our collaborative community of experts verifies each submitted translation, providing ratings that help you find the best translation.</p>
+
+<h3>Comprehensive and Up-To-Date</h3>
+<p>Users add origin words and languages to our ever-growing database to keep up with an ever-changing world. If you can't find something on Crowd Dictionary, just add it!</p>
+
+<div>
+  <p>Start searching now! &nbsp; <%= button_to "Go", language_search_path, class: "btn btn-primary", method: "get" %></p>
+  <p>Or <%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to start adding translations and languages to our database.</p>
+</div>
+
+<h3>How to Use</h3>
+<iframe width="1280" height="688" src="https://www.youtube.com/embed/g4V1Bjitkk4" title="Crowd Dictionary demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
