@@ -2,12 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show ]
 
   def show
+    authorize User
     @sum = 0
     @num_ratings = 0
     @user.translated_words.each do |phrase|
       phrase.ratings.each do |rating|
-        sum += rating.rating_val.to_f
-        num_ratings += 1
+        @sum += rating.rating_val.to_f
+        @num_ratings += 1
       end
     end
   end
