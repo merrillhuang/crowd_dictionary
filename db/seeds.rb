@@ -77,7 +77,7 @@ korean_phrases.each do |phrase|
     )
 end
 
-if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id) == nil
+if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
   content: "书",
   language_id: Language.find_by({:name => "Chinese"}).id
@@ -85,7 +85,7 @@ if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => 
   submitter_id: User.all.sample.id
   )
 
-if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id) == nil
+if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
   content: "libro",
   language_id: Language.find_by({:name => "Spanish"}).id
@@ -93,7 +93,7 @@ if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content =
   submitter_id: User.all.sample.id
   )
 
-if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id) == nil
+if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
   content: "livre",
   language_id: Language.find_by({:name => "French"}).id
@@ -101,7 +101,7 @@ if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content =
   submitter_id: User.all.sample.id
   )
 
-if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id) == nil
+if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
   Phrase.create(
   content: "책",
   language_id: Language.find_by({:name => "Korean"}).id
@@ -109,7 +109,7 @@ if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => 
   submitter_id: User.all.sample.id
   )
 
-if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content => "书", :origin_id => nil}).id) == nil
+if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content => "书", :origin_id => nil}).id}) == nil
   Phrase.create(
   content: "book",
   language_id: Language.find_by({:name => "English"}).id
