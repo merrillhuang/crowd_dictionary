@@ -21,6 +21,8 @@ class RatingsController < ApplicationController
 
   # POST /ratings or /ratings.json
   def create
+    authorize Rating
+
     @rating = Rating.new(rating_params)
 
     respond_to do |format|
