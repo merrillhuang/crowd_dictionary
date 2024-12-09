@@ -2,16 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show ]
 
   def show
-    sum = 0
-    num_ratings = 0
+    @sum = 0
+    @num_ratings = 0
     @user.translated_words.each do |phrase|
       phrase.ratings.each do |rating|
         sum += rating.rating_val.to_f
         num_ratings += 1
       end
     end
-
-    @average_rating = (sum / num_ratings).truncate(2)
   end
 
   private
