@@ -12,6 +12,7 @@ ENV['USERNAMES'].split(' ').each_with_index do |username, index|
       password: ENV['PASSWORDS'].split(' ')[index],
       username: username
     )
+  end
 end
 
 languages = ["English", "Chinese", "Spanish", "French", "Korean"]
@@ -35,6 +36,7 @@ english_phrases.each do |phrase|
       origin_id: nil,
       submitter_id: nil
     )
+  end
 end
 
 chinese_phrases.each do |phrase|
@@ -45,6 +47,7 @@ chinese_phrases.each do |phrase|
       origin_id: nil,
       submitter_id: nil
     )
+  end
 end
 
 spanish_phrases.each do |phrase|
@@ -55,6 +58,7 @@ spanish_phrases.each do |phrase|
       origin_id: nil,
       submitter_id: nil
     )
+  end
 end
 
 french_phrases.each do |phrase|
@@ -65,6 +69,7 @@ french_phrases.each do |phrase|
       origin_id: nil,
       submitter_id: nil
     )
+  end
 end
 
 korean_phrases.each do |phrase|
@@ -75,6 +80,7 @@ korean_phrases.each do |phrase|
       origin_id: nil,
       submitter_id: nil
     )
+  end
 end
 
 if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
