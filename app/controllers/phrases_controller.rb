@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: %i[ show edit update destroy ]
+  before_action :set_phrase, only: %i[ show ]
 
   # GET /phrases or /phrases.json
   def index
@@ -8,6 +8,8 @@ class PhrasesController < ApplicationController
 
   # GET /phrases/1 or /phrases/1.json
   def show
+    authorize Phrase
+
     if params[:target_language]
       @translations = @phrase.translations.where({"language_id" => params[:target_language]})
       @target_language = Language.where("id" => params[:target_language])[0].name
@@ -29,6 +31,8 @@ class PhrasesController < ApplicationController
 
   # POST /phrases or /phrases.json
   def create
+    authorize Phrase
+
     @phrase = Phrase.new(phrase_params)
 
     respond_to do |format|
@@ -70,6 +74,8 @@ class PhrasesController < ApplicationController
   end
 
   def search
+    authorize Phrase
+
     @origin_word = PhraseSearch.call(params)
 
     if @origin_word
