@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "languages#landing"
   
-  resources :phrases, except: [ :index, :new, :edit, :update, :destroy ]
+  resources :phrases, only: [ :show, :create, :search ]
   resources :ratings, only: [ :create ]
   resources :languages, except: [ :edit, :update, :destroy ]
   devise_for :users
