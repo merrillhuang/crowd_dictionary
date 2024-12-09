@@ -1,13 +1,17 @@
 class LanguagesController < ApplicationController
-  before_action :set_language, only: %i[ show edit update destroy ]
+  before_action :set_language, only: %i[ show ]
 
   # GET /languages or /languages.json
   def index
+    authorize Language
+
     @languages = Language.all
   end
 
   # GET /languages/1 or /languages/1.json
   def show
+    authorize Language
+
     @most_translated_words = MostTranslatedWords.call(@language.id)
 
     @all_origin_words_for_language = Phrase.where({:language_id => @language.id, :origin_id => nil})
@@ -15,6 +19,8 @@ class LanguagesController < ApplicationController
 
   # GET /languages/new
   def new
+    authorize Language
+
     @language = Language.new
   end
 
@@ -24,6 +30,7 @@ class LanguagesController < ApplicationController
 
   # POST /languages or /languages.json
   def create
+    authorize Language
     @language = Language.new(language_params)
 
     respond_to do |format|
@@ -61,6 +68,8 @@ class LanguagesController < ApplicationController
   end
 
   def landing
+    authorize Language
+    
     @languages = Language.all
   end
 

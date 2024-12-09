@@ -15,6 +15,9 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma"
 
+# Use Pundit for authorization of user actions [https://github.com/varvet/pundit]
+gem "pundit"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
