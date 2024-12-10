@@ -1,0 +1,18 @@
+cn:
+  language_name: 中文
+  hello: 你好
+
+  navbar:
+    translate: 翻译
+    languages: 语言表
+    site_language: 网页语言
+    sign_in: 登入
+    sign_up: 登记
+    sign_out: 退出
+
+  language_search:
+    search_database: 搜寻字词!
+    translate: 把
+    from: 从
+    to: 翻译成
+    search: 搜!
