@@ -1,7 +1,7 @@
 <% if @translations.empty? %>
-  <p>Sorry! No translations found for <%= @phrase.content %> in <%= @target_language%> in our database.</p>
+  <p><%=I18n.t("phrase_show.sorry", :content => @phrase.content, :language => @target_language)%></p>
 <% else %>
-  <h1>Translations for <%= @phrase.content%> in <%= @target_language %></h1>
+  <h1><%= I18n.t("phrase_show.title", :content => @phrase.content, :language => @target_language) %></h1>
   <div class="row row-cols-1 row-cols-md-2 g-4">
     <% @translations.each do |translation| %>
       <%= render "phrases/phrase", translation: translation %>
@@ -19,16 +19,16 @@
   <% if user_signed_in? %>
     <%= form_with url: phrases_path do %>
       <div>
-        <p>Add a translation for <%= @phrase.content %> in <%= @target_language %>?</p>
+        <p><%=I18n.t("phrase_show.add?", :content => @phrase.content, :language => @target_language)%></p>
         <%= label_tag :new_translation_box, "" %>
-        <%= text_field_tag :content, nil, placeholder: "Enter your translation", required: true %>
+        <%= text_field_tag :content, nil, placeholder: I18n.t("phrase_show.enter"), required: true %>
       </div>
       <%= hidden_field_tag :language_id, params[:target_language] %>
       <%= hidden_field_tag :origin_id, params[:id] %>
       <%= hidden_field_tag :submitter_id, current_user.id %>
-      <%= submit_tag "Add translation", class: "btn btn-success" %>
+      <%= submit_tag I18n.t("phrase_show.submit"), class: "btn btn-success" %>
     <% end %>
   <% else %>
-    <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to rate translations and add translations for <%= @phrase.content %> in <%= @target_language %> to our database!</p>
+    <p><%= link_to I18n.t("phrase_show.sign_in"), new_user_session_path %>/<%= link_to I18n.t("phrase_show.sign_up"), new_user_registration_path %> <%=I18n.t("phrase_show.sign_in_msg", :content => @phrase.content, :language => @target_language)%></p>
   <% end %>
 </div>

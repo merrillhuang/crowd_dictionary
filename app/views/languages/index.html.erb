@@ -1,4 +1,4 @@
-<h1>Languages</h1>
+<h1><%= I18n.t("navbar.languages") %></h1>
 
 
 <div id="languages" class="list-group">
@@ -14,7 +14,7 @@
 </div>
 
 <% if user_signed_in? %>
-  <div>Don't see your language? <%= link_to "Add it", new_language_path %> to our database!</div>
+  <div><%= I18n.t("dont_see.language") %> <%= link_to I18n.t("dont_see.add"), new_language_path %> <%= I18n.t("dont_see.add_lang") %></div>
 <% else %>
-  <div>Don't see your language? <%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add a new language to the database!</div>
+  <div><%= I18n.t("dont_see.language") %> <%= link_to I18n.t("navbar.sign_in"), new_user_session_path %>/<%= link_to I18n.t("navbar.sign_up"), new_user_registration_path %> <%= I18n.t("dont_see.add_lang") %></div>
 <% end%>

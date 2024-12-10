@@ -5,20 +5,20 @@
 
       <p class="card-text">
           <% if translation.ratings.empty? %>
-            Translation not yet rated
+            <%= I18n.t("phrase_card.not_yet") %>
           <% else %>
-            Average rating: <%= translation.ratings.average(:rating_val).truncate(2) %>
+            <%= I18n.t("phrase_card.avg_rating") %>: <%= translation.ratings.average(:rating_val).truncate(2) %>
           <% end %>
         </p>
 
-      <p class="card-text"><%= translation.ratings.size %> total ratings</p>
+      <p class="card-text"><%= translation.ratings.size %> <%= I18n.t("phrase_card.tot_rate") %></p>
       
       <%= render "ratings/not_rated", translation: translation %>
       
       <br>
 
       <div class="card-footer text-muted">
-        Submitted by <%= link_to(translation.submitter.email, user_path(translation.submitter.id)) %>
+        <%= I18n.t("phrase_card.submitted_by") %> <%= link_to(translation.submitter.email, user_path(translation.submitter.id)) %>
       </div>
     </div>
   </div>

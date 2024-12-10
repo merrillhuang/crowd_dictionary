@@ -1,0 +1,80 @@
+cn:
+  language_name: 中文
+  hello: 你好
+
+  navbar:
+    translate: 翻译
+    languages: 语言表
+    site_language: 网页语言
+    sign_in: 登入
+    sign_up: 登记
+    sign_out: 退出
+
+  language_search:
+    search_database: 搜寻字词!
+    translate: 把
+    from: 从
+    to: 翻译成
+    search: 搜!
+    start_word: 原词
+    start_lang: 原本语言
+    target_lang: 目标语言
+
+  dont_see:
+    language: 若语言表没有您需要的语言，
+    add_lang: 就可以上载新语言
+    add_orig: 就可以为
+    add_orig2: 上载新原词
+    add: 点击上载
+    add_lang: 新语言！
+
+  language_show:
+    most_trans: 最常翻译词语
+    origin_words: 原词
+    translations: 个翻译词
+    back: 回去语言表
+    sorry: 不好意思!
+    no_subs: 没有任何翻译词。
+    add_orig: 为
+    add_orig2: 提供新原词？
+    enter: 输入新原词
+    new_word: 上载新原词
+    no_orig: 没有任何原词。
+
+  new_lang:
+    new: 新语言
+    name: 语言名字
+    create: 上载新语言
+
+  phrase_show:
+    title: "%{content} 的 %{language} 翻译词"
+    sorry: 不好意思 %{content} 没有 %{language} 的翻译词
+    add?: 您要为 %{content} 上载一个 %{language} 的翻译词吗
+    enter: 请输入您的翻译
+    submit: 上载新翻译词
+    sign_in: 登入
+    sign_up: 登记
+    sign_in_msg: 就可以为现有的翻译词评分或为 %{content} 上载新的 %{language} 翻译词!
+  
+  phrase_card:
+    not_yet: 这翻译词尚未被评分
+    avg_rating: 平均分数
+    tot_rate: 评分次数
+    submitted_by: 提供者
+
+  rating:
+    rating: 为这翻译词评分
+    rate: 评分
+  
+  not_select:
+    title: 浏览某语言的 %{content} 翻译词
+    no_translations: 不好意思! %{content} 没有任何翻译词。
+    add?: 您要为 %{content} 上载一个翻译词吗?
+    languages: 具有本词翻译词的语言
+    go: 浏览!
+  
+  user:
+    user: 用户
+    avg_rating: 平均分数
+    not_rated: 用户的翻译词尚未被评分
+    submitted: 用户所提供的翻译词
