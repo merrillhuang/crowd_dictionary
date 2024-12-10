@@ -24,6 +24,7 @@
         <div class="col"><%= link_to word.content, phrase_path(word) %></div>
       <% end %>
     </div>
+    <%= paginate @all_origin_words_for_language %>
   <% else %>
     <p>Sorry! <%= @language.name %> currently has no origin words in our database.</p>
   <% end %>

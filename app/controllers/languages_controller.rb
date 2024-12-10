@@ -5,7 +5,7 @@ class LanguagesController < ApplicationController
   def index
     authorize Language
 
-    @languages = Language.all
+    @languages = Language.page(params[:page]).per(5)
   end
 
   # GET /languages/1 or /languages/1.json
@@ -14,7 +14,7 @@ class LanguagesController < ApplicationController
 
     @most_translated_words = MostTranslatedWords.call(@language.id)
 
-    @all_origin_words_for_language = Phrase.where({ :language_id => @language.id, :origin_id => nil })
+    @all_origin_words_for_language = Phrase.where({ :language_id => @language.id, :origin_id => nil }).page(params[:page]).per(5)
   end
 
   # GET /languages/new

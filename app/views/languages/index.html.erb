@@ -1,10 +1,13 @@
 <h1>Languages</h1>
 
+
 <div id="languages" class="list-group">
   <% @languages.each do |language| %>
     <%= link_to language.name, language, class: "list-group-item list-group-item-action" %>
   <% end %>
 </div>
+
+<%= paginate @languages %>
 
 <% if user_signed_in? %>
   <div>Don't see your language? <%= link_to "Add it", new_language_path %> to our database!</div>
