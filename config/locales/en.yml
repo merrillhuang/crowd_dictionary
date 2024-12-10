@@ -67,3 +67,63 @@ en:
     from: from
     to: to
     search: Go!
+    start_word: Starting word
+    start_lang: Starting Language
+    target_lang: Target Language
+
+  dont_see:
+    language: Don't see your language?
+    add_lang: to add a new language to the database!
+    add_orig: to add origin words for
+    add_orig2: to our database!
+    add: Add it
+    add_lang: to our database!
+
+  language_show:
+    most_trans: Most translated words
+    origin_words: Origin Words
+    translations: translation(s)
+    back: Back to languages
+    sorry: Sorry!
+    no_subs: currently has no submitted translations.
+    add_orig: Add an origin word for
+    add_orig2: to our database?
+    enter: Enter a new origin word
+    new_word: Add origin word
+    no_orig: currently has no origin words in our database.
+
+  new_lang:
+    new: New language
+    name: name
+    create: Create Language
+
+  phrase_show:
+    title: "Translations for %{content} in %{language}"
+    sorry: "Sorry! No translations found for %{content} in %{language} in our database."
+    add?: "Add a translation for %{content} in %{language}?"
+    enter: Enter your translation
+    submit: Add translation
+    sign_in_msg: "to rate translations and add translations for %{content} in %{language} to our database!"
+
+  phrase_card:
+    not_yet: Translation not yet rated
+    avg_rating: Average rating
+    tot_rate: total ratings
+    submitted_by: Submitted by 
+
+  rating:
+    rating: Rate this translation
+    rate: Rate
+
+  not_select:
+    title: See translations for %{content} in
+    no_translations: Sorry! No translations have been submitted for %{content} yet.
+    add?: Add a translation for %{content}?
+    languages: Target Languages with translations
+    go: Go!
+  
+  user:
+    user: user
+    avg_rating: Average rating
+    not_rated: This user's translations not have yet been rated
+    submitted: Submitted Translations

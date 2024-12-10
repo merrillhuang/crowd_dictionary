@@ -1,10 +1,10 @@
-<h1>User <%= @user.email %></h1>
+<h1><%= I18n.t("user.user") %> <%= @user.email %></h1>
 <% if @avg_rating > 0 %>
-  <p>Average translation rating: &nbsp; <%= @avg_rating %></p>
+  <p><%= I18n.t("user.avg_rating") %>: &nbsp; <%= @avg_rating %></p>
 <% else %>
-  <p>This user's translations not have yet been rated</p>
+  <p><%= I18n.t("user.not_rated") %></p>
 <% end %>
-<h2>Submitted Translations</h2>
+<h2><%= I18n.t("user.submitted") %></h2>
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <% @translations.each do |translation| %>
     <%= render "users/submitted_translation", translation: translation %>
