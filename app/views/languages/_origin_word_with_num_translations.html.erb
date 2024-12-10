@@ -1,0 +1,6 @@
+<% words_list.each do |word| %>
+  <%= link_to phrase_path(word), class: "list-group-item d-flex" do %>
+    <span class="me-auto">&nbsp; <%= word.content %></span>
+    <span><%= word.translations.size %> translation(s)</span>
+  <% end %>
+<% end %>
