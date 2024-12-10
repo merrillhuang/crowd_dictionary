@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.1"
 
+gem "omniauth-github"
+gem "omniauth-rails_csrf_protection"
+
 gem "kaminari"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
