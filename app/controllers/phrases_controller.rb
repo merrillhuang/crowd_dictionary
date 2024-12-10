@@ -11,7 +11,7 @@ class PhrasesController < ApplicationController
     authorize Phrase
 
     if params[:target_language]
-      @translations = @phrase.translations.where({ "language_id" => params[:target_language] })
+      @translations = @phrase.translations.where({ "language_id" => params[:target_language] }).page(params[:page]).per(4)
       @target_language = Language.where("id" => params[:target_language])[0].name
     else
       respond_to do |format|
