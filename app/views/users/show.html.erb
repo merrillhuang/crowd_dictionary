@@ -1,4 +1,4 @@
-<h1>User <%= @user.username %></h1>
+<h1>User <%= @user.email %></h1>
 <% if @num_ratings > 0 %>
   <p>Average translation rating: &nbsp; <%= (@sum / @num_ratings).truncate(2) %></p>
 <% else %>

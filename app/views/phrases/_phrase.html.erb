@@ -18,7 +18,7 @@
       <br>
 
       <div class="card-footer text-muted">
-        Submitted by <%= link_to(translation.submitter.username, user_path(translation.submitter.id)) %>
+        Submitted by <%= link_to(translation.submitter.email, user_path(translation.submitter.id)) %>
       </div>
     </div>
   </div>
