@@ -1,12 +1,14 @@
 <h1>User <%= @user.email %></h1>
-<% if @num_ratings > 0 %>
-  <p>Average translation rating: &nbsp; <%= (@sum / @num_ratings).truncate(2) %></p>
+<% if @avg_rating > 0 %>
+  <p>Average translation rating: &nbsp; <%= @avg_rating %></p>
 <% else %>
   <p>This user's translations not have yet been rated</p>
 <% end %>
 <h2>Submitted Translations</h2>
 <div class="row row-cols-1 row-cols-md-2 g-4">
-  <% @user.translated_words.each do |translation| %>
+  <% @translations.each do |translation| %>
     <%= render "users/submitted_translation", translation: translation %>
   <% end %>
 </div>
+
+<%= paginate @translations %>
