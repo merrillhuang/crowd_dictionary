@@ -103,6 +103,8 @@ en:
     add?: "Add a translation for %{content} in %{language}?"
     enter: Enter your translation
     submit: Add translation
+    sign_in: Sign In
+    sign_up: Sign Up
     sign_in_msg: "to rate translations and add translations for %{content} in %{language} to our database!"
 
   phrase_card:
