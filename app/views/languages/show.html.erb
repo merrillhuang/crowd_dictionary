@@ -6,30 +6,28 @@
   <% if @most_translated_words.empty? %>
     <p>Sorry! <%= @language.name %> currently has no submitted translations.</p>
   <% else %>
-    <% @most_translated_words.each do |word| %>
-      <%= link_to phrase_path(word), class: "list-group-item d-flex" do %>
-        <span class="me-auto">&nbsp; <%= word.content %></span>
-        <span><%= word.translations.size %> translation(s)</span>
-      <% end %>
-    <% end %>
+    <%= render "languages/origin_word_with_num_translations", words_list: @most_translated_words %>
   <% end %>
   <%= link_to "Back to languages", languages_path %>
 </ol>
 
 <h3 class="mt-4">Origin Words:</h3>
 
-  <% if @all_origin_words_for_language.size > 0 %>
-    <div class="row row-cols-1 row-cols-md-5 g-4">
-      <% @all_origin_words_for_language.each do |word| %>
-        <div class="col"><%= link_to word.content, phrase_path(word) %></div>
-      <% end %>
-    </div>
-    <%= paginate @all_origin_words_for_language %>
-  <% else %>
-    <p>Sorry! <%= @language.name %> currently has no origin words in our database.</p>
-  <% end %>
+<% if @all_origin_words_for_language.size > 0 %>
+  <ul class="list-group">
+    <%= render "languages/origin_word_with_num_translations", words_list: @all_origin_words_for_language %>
+  </ul>
+<% else %>
+  <p>Sorry! <%= @language.name %> currently has no origin words in our database.</p>
+<% end %>
 
-  <br>
+<br>
+
+<div class="d-flex justify-content-center">
+  <%= paginate @all_origin_words_for_language %>
+</div>
+
+<br>
 
   <% if user_signed_in? %>
       <%= form_with url: phrases_path do %>
