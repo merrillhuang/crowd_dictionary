@@ -1,24 +1,24 @@
 <h2><%= @language.name %></h2>
 
-<h3>Most translated words:</h3>
+<h3><%= I18n.t("language_show.most_trans") %>:</h3>
 
 <ol class="list-group list-group-numbered">
   <% if @most_translated_words.empty? %>
-    <p>Sorry! <%= @language.name %> currently has no submitted translations.</p>
+    <p><%= I18n.t("language_show.sorry") %> <%= @language.name %> <%= I18n.t("language_show.no_subs") %></p>
   <% else %>
     <%= render "languages/origin_word_with_num_translations", words_list: @most_translated_words %>
   <% end %>
-  <%= link_to "Back to languages", languages_path %>
+  <%= link_to I18n.t("language_show.back"), languages_path %>
 </ol>
 
-<h3 class="mt-4">Origin Words:</h3>
+<h3 class="mt-4"><%= I18n.t("language_show.origin_words") %>:</h3>
 
 <% if @all_origin_words_for_language.size > 0 %>
   <ul class="list-group">
     <%= render "languages/origin_word_with_num_translations", words_list: @all_origin_words_for_language %>
   </ul>
 <% else %>
-  <p>Sorry! <%= @language.name %> currently has no origin words in our database.</p>
+  <p><%= I18n.t("language_show.sorry") %> <%= @language.name %> <%= I18n.t("language_show.no_orig") %></p>
 <% end %>
 
 <br>
@@ -30,16 +30,16 @@
   <% if user_signed_in? %>
       <%= form_with url: phrases_path do %>
         <div>
-          <p>Add an origin word for <%= @language.name %> in our database?</p>
+          <p><%= I18n.t("language_show.add_orig") %> <%= @language.name %> <%= I18n.t("language_show.add_orig2") %></p>
           <%= label_tag :new_origin_word, "" %>
-          <%= text_field_tag :content, nil, placeholder: "Enter a new origin word", required: true %>
+          <%= text_field_tag :content, nil, placeholder: I18n.t("language_show.enter"), required: true %>
         </div>
         <%= hidden_field_tag :language_id, params[:id] %>
         <%= hidden_field_tag :origin_id, nil %>
         <%= hidden_field_tag :submitter_id, nil %>
-        <%= submit_tag "Add origin word", class: "btn btn-success" %>
+        <%= submit_tag I18n.t("language_show.new_word"), class: "btn btn-success" %>
       <% end %>
     <% else %>
-      <p><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %> to add origin words for <%= @target_language %> to our database!</p>
+      <p><%= link_to I18n.t("navbar.sign_in"), new_user_session_path %>/<%= link_to I18n.t("navbar.sign_up"), new_user_registration_path %><%= I18n.t("dont_see.add_orig") %> <%= @language.name %> <%=I18n.t("dont_see.add_orig2") %></p>
     <% end %>
 </div>

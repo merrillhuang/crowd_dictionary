@@ -1,9 +1,9 @@
-<h1>New language</h1>
+<h1><%= I18n.t("new_lang.new") %></h1>
 
 <%= render "form", language: @language %>
 
 <br>
 
 <div>
-  <%= link_to "Back to languages", languages_path %>
+  <%= link_to I18n.t("language_show.back"), languages_path %>
 </div>
