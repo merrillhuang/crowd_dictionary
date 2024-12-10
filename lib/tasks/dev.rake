@@ -62,7 +62,7 @@ task({ :sample_data => :environment }) do
         content: phrase,
         language_id: database_languages[index].id,
         origin_id: rand() < 0.3 ? nil : phrases.sample.id,
-        submitter_id: users.sample.id 
+        submitter_id: users.sample.id
       )
     end
   end

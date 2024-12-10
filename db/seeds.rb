@@ -25,7 +25,7 @@ end
 languages = ["English", "Chinese", "Spanish", "French", "Korean"]
 
 languages.each do |language|
-  if Language.find_by({:name => language}) == nil
+  if Language.find_by({ :name => language }) == nil
     Language.create(name: language)
   end
 end
@@ -37,10 +37,10 @@ french_phrases = ["livre", "arbre", "maison", "eau", "autocar"]
 korean_phrases = ["책", "나무", "집", "물", "차"]
 
 english_phrases.each do |phrase|
-  if Phrase.find_by({:content => phrase, :origin_id => nil}) == nil
+  if Phrase.find_by({ :content => phrase, :origin_id => nil }) == nil
     Phrase.create(
       content: phrase,
-      language_id: Language.find_by({:name => "English"}).id,
+      language_id: Language.find_by({ :name => "English" }).id,
       origin_id: nil,
       submitter_id: nil
     )
@@ -48,10 +48,10 @@ english_phrases.each do |phrase|
 end
 
 chinese_phrases.each do |phrase|
-  if Phrase.find_by({:content => phrase, :origin_id => nil}) == nil
+  if Phrase.find_by({ :content => phrase, :origin_id => nil }) == nil
     Phrase.create(
       content: phrase,
-      language_id: Language.find_by({:name => "Chinese"}).id,
+      language_id: Language.find_by({ :name => "Chinese" }).id,
       origin_id: nil,
       submitter_id: nil
     )
@@ -59,10 +59,10 @@ chinese_phrases.each do |phrase|
 end
 
 spanish_phrases.each do |phrase|
-  if Phrase.find_by({:content => phrase, :origin_id => nil}) == nil
+  if Phrase.find_by({ :content => phrase, :origin_id => nil }) == nil
     Phrase.create(
       content: phrase,
-      language_id: Language.find_by({:name => "Spanish"}).id,
+      language_id: Language.find_by({ :name => "Spanish" }).id,
       origin_id: nil,
       submitter_id: nil
     )
@@ -70,10 +70,10 @@ spanish_phrases.each do |phrase|
 end
 
 french_phrases.each do |phrase|
-  if Phrase.find_by({:content => phrase, :origin_id => nil}) == nil
+  if Phrase.find_by({ :content => phrase, :origin_id => nil }) == nil
     Phrase.create(
       content: phrase,
-      language_id: Language.find_by({:name => "French"}).id,
+      language_id: Language.find_by({ :name => "French" }).id,
       origin_id: nil,
       submitter_id: nil
     )
@@ -81,58 +81,63 @@ french_phrases.each do |phrase|
 end
 
 korean_phrases.each do |phrase|
-  if Phrase.find_by({:content => phrase, :origin_id => nil}) == nil
+  if Phrase.find_by({ :content => phrase, :origin_id => nil }) == nil
     Phrase.create(
       content: phrase,
-      language_id: Language.find_by({:name => "Korean"}).id,
+      language_id: Language.find_by({ :name => "Korean" }).id,
       origin_id: nil,
       submitter_id: nil
     )
   end
 end
 
-if Phrase.find_by({:content => "书", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
+if Phrase.find_by({ :content => "书",
+                    :origin_id => Phrase.find_by({ :content => "book", :origin_id => nil }).id }) == nil
   Phrase.create(
-  content: "书",
-  language_id: Language.find_by({:name => "Chinese"}).id,
-  origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
-  submitter_id: User.all.sample.id
+    content: "书",
+    language_id: Language.find_by({ :name => "Chinese" }).id,
+    origin_id: Phrase.find_by({ :content => "book", :origin_id => nil }).id,
+    submitter_id: User.all.sample.id
   )
 end
 
-if Phrase.find_by({:content => "libro", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
+if Phrase.find_by({ :content => "libro",
+                    :origin_id => Phrase.find_by({ :content => "book", :origin_id => nil }).id }) == nil
   Phrase.create(
-  content: "libro",
-  language_id: Language.find_by({:name => "Spanish"}).id,
-  origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
-  submitter_id: User.all.sample.id
+    content: "libro",
+    language_id: Language.find_by({ :name => "Spanish" }).id,
+    origin_id: Phrase.find_by({ :content => "book", :origin_id => nil }).id,
+    submitter_id: User.all.sample.id
   )
 end
 
-if Phrase.find_by({:content => "livre", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
+if Phrase.find_by({ :content => "livre",
+                    :origin_id => Phrase.find_by({ :content => "book", :origin_id => nil }).id }) == nil
   Phrase.create(
-  content: "livre",
-  language_id: Language.find_by({:name => "French"}).id,
-  origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
-  submitter_id: User.all.sample.id
+    content: "livre",
+    language_id: Language.find_by({ :name => "French" }).id,
+    origin_id: Phrase.find_by({ :content => "book", :origin_id => nil }).id,
+    submitter_id: User.all.sample.id
   )
 end
 
-if Phrase.find_by({:content => "책", :origin_id => Phrase.find_by({:content => "book", :origin_id => nil}).id}) == nil
+if Phrase.find_by({ :content => "책",
+                    :origin_id => Phrase.find_by({ :content => "book", :origin_id => nil }).id }) == nil
   Phrase.create(
-  content: "책",
-  language_id: Language.find_by({:name => "Korean"}).id,
-  origin_id: Phrase.find_by({:content => "book", :origin_id => nil}).id,
-  submitter_id: User.all.sample.id
+    content: "책",
+    language_id: Language.find_by({ :name => "Korean" }).id,
+    origin_id: Phrase.find_by({ :content => "book", :origin_id => nil }).id,
+    submitter_id: User.all.sample.id
   )
 end
 
-if Phrase.find_by({:content => "book", :origin_id => Phrase.find_by({:content => "书", :origin_id => nil}).id}) == nil
+if Phrase.find_by({ :content => "book",
+                    :origin_id => Phrase.find_by({ :content => "书", :origin_id => nil }).id }) == nil
   Phrase.create(
-  content: "book",
-  language_id: Language.find_by({:name => "English"}).id,
-  origin_id: Phrase.find_by({:content => "书", :origin_id => nil}).id,
-  submitter_id: User.all.sample.id
+    content: "book",
+    language_id: Language.find_by({ :name => "English" }).id,
+    origin_id: Phrase.find_by({ :content => "书", :origin_id => nil }).id,
+    submitter_id: User.all.sample.id
   )
 end
 
@@ -140,10 +145,10 @@ if Rating.count < 200
   200.times do
     rand_rating = rand(4..5)
     phrase_id = Phrase.all.sample.id
-      Rating.create(
-        rating_val: rand_rating,
-        phrase_id: Phrase.where.not({:origin_id => nil}).sample.id,
-        submitter_id: User.all.sample.id
-      )
+    Rating.create(
+      rating_val: rand_rating,
+      phrase_id: Phrase.where.not({ :origin_id => nil }).sample.id,
+      submitter_id: User.all.sample.id
+    )
   end
 end

@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-  before_action :set_phrase, only: %i[ show ]
+  before_action :set_phrase, only: %i[show]
 
   # GET /phrases or /phrases.json
   def index
@@ -11,7 +11,7 @@ class PhrasesController < ApplicationController
     authorize Phrase
 
     if params[:target_language]
-      @translations = @phrase.translations.where({"language_id" => params[:target_language]})
+      @translations = @phrase.translations.where({ "language_id" => params[:target_language] })
       @target_language = Language.where("id" => params[:target_language])[0].name
     else
       respond_to do |format|
@@ -38,7 +38,9 @@ class PhrasesController < ApplicationController
     respond_to do |format|
       if @phrase.save
         if (@phrase.origin_id != nil)
-          format.html { redirect_back fallback_location: phrase_path(@phrase), notice: "Phrase was successfully created." }
+          format.html {
+            redirect_back fallback_location: phrase_path(@phrase), notice: "Phrase was successfully created."
+          }
         else
           format.html { redirect_to phrase_url(@phrase), notice: "Phrase was successfully created." }
           format.json { render :show, status: :created, location: @phrase }
@@ -92,13 +94,14 @@ class PhrasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_phrase
-      @phrase = Phrase.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def phrase_params
-      params.permit(:content, :submitter_id, :language_id, :origin_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_phrase
+    @phrase = Phrase.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def phrase_params
+    params.permit(:content, :submitter_id, :language_id, :origin_id)
+  end
 end

@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  before_action :set_language, only: %i[ show ]
+  before_action :set_language, only: %i[show]
 
   # GET /languages or /languages.json
   def index
@@ -14,7 +14,7 @@ class LanguagesController < ApplicationController
 
     @most_translated_words = MostTranslatedWords.call(@language.id)
 
-    @all_origin_words_for_language = Phrase.where({:language_id => @language.id, :origin_id => nil})
+    @all_origin_words_for_language = Phrase.where({ :language_id => @language.id, :origin_id => nil })
   end
 
   # GET /languages/new
@@ -69,7 +69,7 @@ class LanguagesController < ApplicationController
 
   def search
     authorize Language
-    
+
     @languages = Language.all
   end
 
@@ -78,13 +78,14 @@ class LanguagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_language
-      @language = Language.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def language_params
-      params.require(:language).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_language
+    @language = Language.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def language_params
+    params.require(:language).permit(:name)
+  end
 end

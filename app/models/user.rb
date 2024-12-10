@@ -25,5 +25,5 @@ class User < ApplicationRecord
 
   has_many :translated_words, class_name: "Phrase", foreign_key: "submitter_id", dependent: :destroy
 
-  has_many  :ratings, class_name: "Rating", foreign_key: "submitter_id", dependent: :destroy
+  has_many :ratings, class_name: "Rating", foreign_key: "submitter_id", dependent: :destroy
 end
