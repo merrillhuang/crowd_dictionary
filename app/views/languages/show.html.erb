@@ -23,9 +23,7 @@
 
 <br>
 
-<div class="d-flex justify-content-center">
-  <%= paginate @all_origin_words_for_language %>
-</div>
+<%= render "shared/centered_paginator", items: @all_origin_words_for_language %>
 
 <br>
 
