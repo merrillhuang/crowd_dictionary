@@ -1,4 +1,6 @@
 class AvgUserRating
+  # This can use comments to explain what the method does
+  # Also this can just be a scope
   def self.call(user)
     sum = 0
     num_ratings = 0
@@ -9,7 +11,7 @@ class AvgUserRating
         num_ratings += 1
       end
     end
-    
+
     if num_ratings > 0
       avg_rating = (sum / num_ratings).truncate(2)
     end

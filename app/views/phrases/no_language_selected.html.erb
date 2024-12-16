@@ -42,7 +42,7 @@
       <%= select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name"), prompt: I18n.t("language_search.target_lang"), required: true %>
     </div>
     <%= hidden_field_tag :origin_id, params[:id] %>
-    <%= hidden_field_tag :submitter_id, current_user.id %>
+    <%= hidden_field_tag :submitter_id, current_user.id %> <%# This should be current user in the controller %>
     <%= submit_tag "Add translation", class: "btn btn-success" %>
   <% end %>
 <% end %>

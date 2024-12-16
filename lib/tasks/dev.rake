@@ -73,7 +73,7 @@ task({ :sample_data => :environment }) do
     rand_rating = rand(1..5)
     rand_phrase = rand(1..25)
     rating = Rating.create(
-      rating: rand_rating,
+      rating_val: rand_rating, # This is rating_val according to the schema. Make sure your code works before commiting.
       phrase_id: phrases.sample.id,
       submitter_id: users.sample.id
     )

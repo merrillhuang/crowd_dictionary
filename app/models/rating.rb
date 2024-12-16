@@ -14,7 +14,7 @@ class Rating < ApplicationRecord
 
   belongs_to :phrase, required: true, class_name: "Phrase", foreign_key: "phrase_id"
 
-  validates :rating_val, presence: true
+  validates :rating_val, presence: true # Rating val can just be value. So you can call rating.value instead of rating.rating_val
   validates :phrase_id, presence: true
   validates :submitter_id, presence: true
 end

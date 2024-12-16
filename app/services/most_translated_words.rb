@@ -1,4 +1,5 @@
 class MostTranslatedWords
+  # Could use some comments
   def self.call(language_id)
     origin_words_for_language = Phrase.where({ "language_id" => language_id, "origin_id" => nil })
     translations_count = {}

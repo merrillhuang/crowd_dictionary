@@ -67,6 +67,19 @@ class LanguagesController < ApplicationController
     end
   end
 
+  #Can remove search and just change index to 
+  # def index
+  #   authorize Language
+  
+  #   if params[:search].present?
+  #     @languages = Language.where("name LIKE ?", "%#{params[:search]}%")
+  #   else
+  #     @languages = Language.all
+  #   end
+  
+  #   @languages = @languages.page(params[:page]).per(10) # Adjust per page as needed
+  # end
+
   def search
     authorize Language
 

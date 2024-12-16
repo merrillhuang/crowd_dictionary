@@ -3,7 +3,7 @@
   <% if not_rated %> 
     <p><%= I18n.t("rating.rating") %>:</p>
     <%= form_with url: ratings_path do %>
-      <%= hidden_field_tag :submitter_id, current_user.id %>
+      <%= hidden_field_tag :submitter_id, current_user.id %> <%# This should be current user in the controller %>
       <%= hidden_field_tag :phrase_id, translation.id %>
       <%= number_field_tag :rating_val, 5, in: 1..5, required: true %>
       <%= submit_tag I18n.t("rating.rate"), class: "btn btn-primary" %>
