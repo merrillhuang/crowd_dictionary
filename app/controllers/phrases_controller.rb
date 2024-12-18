@@ -75,7 +75,7 @@ class PhrasesController < ApplicationController
     end
   end
 
-  def search
+  def search # Could be in the model
     authorize Phrase
 
     @origin_word = PhraseSearch.call(params)

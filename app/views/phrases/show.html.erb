@@ -25,7 +25,7 @@
       </div>
       <%= hidden_field_tag :language_id, params[:target_language] %>
       <%= hidden_field_tag :origin_id, params[:id] %>
-      <%= hidden_field_tag :submitter_id, current_user.id %>
+      <%= hidden_field_tag :submitter_id, current_user.id %> <%# This should be current user in the controller %>
       <%= submit_tag I18n.t("phrase_show.submit"), class: "btn btn-success" %>
     <% end %>
   <% else %>
