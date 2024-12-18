@@ -35,6 +35,8 @@ class PhrasesController < ApplicationController
 
     @phrase = Phrase.new(phrase_params)
 
+    @phrase.submitter_id = current_user.id
+
     respond_to do |format|
       if @phrase.save
         if (@phrase.origin_id != nil)
@@ -75,7 +77,7 @@ class PhrasesController < ApplicationController
     end
   end
 
-  def search # Could be in the model
+  def search
     authorize Phrase
 
     @origin_word = PhraseSearch.call(params)
@@ -102,6 +104,6 @@ class PhrasesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def phrase_params
-    params.permit(:content, :submitter_id, :language_id, :origin_id)
+    params.permit(:content, :language_id, :origin_id)
   end
 end
