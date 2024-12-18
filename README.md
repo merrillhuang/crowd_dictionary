@@ -17,10 +17,7 @@
     run ```gem install rails``` in a terminal
 3.    Clone this repository: run ```git clone https://github.com/merrillhuang/crowd_dictionary.git```
 4.    Start your application locally by running ```bundle exec rails server``` in a terminal. Access it in a browser by visitng ```localhost:3000```
-  <ul>
-      <li>Note: this application uses Github OAuth. Sign-in/Sign-up will not work until you either [get your own GitHub OAuth Client ID and Client Secret] or comment out ```config.omniauth :github, ENV.fetch("GITHUB_ID"), ENV.fetch("GITHUB_SECRET"), scope: "user"``` in devise.rb.
-      </li>
-  </ul>
+      -    Note: this application uses Github OAuth. Sign-in/Sign-up will not work until you either [get and set your own GitHub OAuth Client ID and Client Secret in .env](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authenticating-to-the-rest-api-with-an-oauth-app#registering-your-app) or comment out ```config.omniauth :github, ENV.fetch("GITHUB_ID"), ENV.fetch("GITHUB_SECRET"), scope: "user"``` in devise.rb.
 6.    Set up the database and associated models by running ```rake db:migrate``` in a terminal.
 7.    (Optional) Seed your database with data by running ```rails db:seed``` for a small amount of data or ```rake sample_data``` for a larger amount of data. <strong>Be careful when using the rake sample_data command, as it will delete all your existing data</strong>. Only use it when seeding the application for the first time or when starting fresh.
 ***
