@@ -6,7 +6,6 @@
     <%= hidden_field_tag :content, @origin_content %>
     <%= hidden_field_tag :language_id, params[:starting_language] %>
     <%= hidden_field_tag :origin_id, nil %>
-    <%= hidden_field_tag :submitter_id, nil %> <%# This should be current user in the controller %>
     <%= submit_tag "Add origin word", class: "btn btn-success" %>
   <% end %>
 <% else %>
