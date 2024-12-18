@@ -1,6 +1,5 @@
 class AvgUserRating
-  # This can use comments to explain what the method does
-  # Also this can just be a scope
+  # Gives a User a rating by averaging the ratings for all of their submitted translations
   def self.call(user)
     sum = 0
     num_ratings = 0
@@ -12,6 +11,7 @@ class AvgUserRating
       end
     end
 
+    # Makes sure this user's submitted translations have been rated at least once
     if num_ratings > 0
       avg_rating = (sum / num_ratings).truncate(2)
     end

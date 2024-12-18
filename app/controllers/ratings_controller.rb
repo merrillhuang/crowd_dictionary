@@ -25,6 +25,8 @@ class RatingsController < ApplicationController
 
     @rating = Rating.new(rating_params)
 
+    @rating.submitter_id = current_user.id
+
     respond_to do |format|
       if @rating.save
         format.html { redirect_back fallback_location: root_path, notice: "Rating was successfully created." }
@@ -68,6 +70,6 @@ class RatingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def rating_params
-    params.permit(:rating_val, :submitter_id, :phrase_id)
+    params.permit(:rating_val, :phrase_id)
   end
 end
