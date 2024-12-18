@@ -18,7 +18,7 @@
 3.    Clone this repository: run ```git clone https://github.com/merrillhuang/crowd_dictionary.git```
 4.    Start your application locally by running ```bundle exec rails server``` in a terminal. Access it in a browser by visitng ```localhost:3000```
   <ul>
-      <li>Note: this application uses Github OAuth. Sign-in/Sign-up will not work until you either [get your own GitHub OAuth Client ID and Client Secret](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authenticating-to-the-rest-api-with-an-oauth-app#registering-your-app) or comment out ```config.omniauth :github, ENV.fetch("GITHUB_ID"), ENV.fetch("GITHUB_SECRET"), scope: "user"``` in devise.rb.
+      <li>Note: this application uses Github OAuth. Sign-in/Sign-up will not work until you either [get your own GitHub OAuth Client ID and Client Secret] or comment out ```config.omniauth :github, ENV.fetch("GITHUB_ID"), ENV.fetch("GITHUB_SECRET"), scope: "user"``` in devise.rb.
       </li>
   </ul>
 6.    Set up the database and associated models by running ```rake db:migrate``` in a terminal.
